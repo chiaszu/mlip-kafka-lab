@@ -2,31 +2,31 @@
 
 This repository contains my implementation of Apache Kafka producer-consumer patterns and streaming data processing.
 
-## 🎯 Project Overview
+## Project Overview
 
 Started as a class lab, now extended as a personal exploration of Kafka's capabilities for real-time data streaming and processing.
 
-## 📋 Completed Features
+## Completed Features
 
 ### Core Kafka Implementation
-- ✅ **SSH Tunnel Setup**: Secure connection to remote Kafka server
-- ✅ **Producer Mode**: Streams weather data for multiple cities
-- ✅ **Consumer Mode**: Reads and processes messages with offset management
-- ✅ **CLI Tools**: Using `kcat` for topic management and monitoring
+- **SSH Tunnel Setup**: Secure connection to remote Kafka server
+- **Producer Mode**: Streams weather data for multiple cities
+- **Consumer Mode**: Reads and processes messages with offset management
+- **CLI Tools**: Using `kcat` for topic management and monitoring
 
 ### Data Pipeline
 - **Cities**: Pittsburgh, New York, San Francisco
 - **Data Format**: JSON with city, timestamp, and temperature
 - **Offset Strategy**: `earliest` for complete message history
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Apache Kafka**: Distributed streaming platform
 - **Python**: kafka-python library for producers/consumers
 - **kcat**: Command-line Kafka toolkit
 - **Jupyter Notebook**: Interactive development environment
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 ```bash
@@ -43,7 +43,7 @@ ssh -L 9092:localhost:9092 user@remote-server -NTf
 ### Run the Notebook
 Open `KafkaDemo.ipynb` and execute the cells to see the producer-consumer pattern in action.
 
-## 📊 Key Learnings
+## Key Learnings
 
 ### Kafka Concepts Mastered
 - **Topics & Partitions**: Message organization and distribution
@@ -60,14 +60,14 @@ kcat -b localhost:9092 -L
 kcat -b localhost:9092 -t my-topic -C -c 5 -o beginning -f 'Offset: %o, Message: %s\n'
 ```
 
-## 🔮 Future Extensions
+## Future Extensions
 
 Planning to build a **Movie Recommendation Pipeline** using existing movielog streams:
 - Real-time viewing pattern analysis
 - Collaborative filtering recommendations  
 - Dashboard for recommendation insights
 
-## 📚 Resources
+## Resources
 
 - [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
 - [kafka-python Library](https://kafka-python.readthedocs.io/)
