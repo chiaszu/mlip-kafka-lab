@@ -1,58 +1,78 @@
-# Lab 2: Kafka for Data Streaming
+# My Kafka Learning Project
 
-In this lab, you will gain hands-on experience with Apache Kafka, a distributed streaming platform that plays a key role in processing large-scale real-time data. You will establish a connection to a Kafka broker, produce and consume messages, and explore Kafka command-line tools. This lab will prepare you for your group project, where you'll work with Kafka streams. 
+This repository contains my implementation of Apache Kafka producer-consumer patterns and streaming data processing.
 
-To receive credit for this lab, show your work to the TA during recitation.
+## 🎯 Project Overview
 
-## Deliverables
-- [ ] Establish a secure SSH tunnel to the Kafka server. Explain to the TA the concepts of topic and offsets in Kafka and how this ensures message continuity if a consumer is disconnected.
-- [ ] Modify starter code to implement producer and consumer modes for a Kafka topic. Explain the the tradeoffs of the different *auto_offset_reset* values.
-- [ ] Demonstrate using Kafka's CLI tool *kcat* (or alternatives) to manage and monitor Kafka topics and messages.
+Started as a class lab, now extended as a personal exploration of Kafka's capabilities for real-time data streaming and processing.
 
+## 📋 Completed Features
 
-## Getting started
-- Clone the starter code from this Git repository.
-- The repository includes a python notebook for Kafka producer and consumer model.
+### Core Kafka Implementation
+- ✅ **SSH Tunnel Setup**: Secure connection to remote Kafka server
+- ✅ **Producer Mode**: Streams weather data for multiple cities
+- ✅ **Consumer Mode**: Reads and processes messages with offset management
+- ✅ **CLI Tools**: Using `kcat` for topic management and monitoring
 
-## Connecting to Kafka server
-1. Use SSH to create a tunnel to the Kafka server (find remote_server, user, and password on the Canvas entry for this lab):  
-   `ssh -L <local_port>:localhost:<remote_port> <user>@<remote_server> -NTf`
-2. Test the Kafka server connection to ensure it's operational.
+### Data Pipeline
+- **Cities**: Pittsburgh, New York, San Francisco
+- **Data Format**: JSON with city, timestamp, and temperature
+- **Offset Strategy**: `earliest` for complete message history
 
-## Implementing Producer-Consumer Mode
-### 1. Producer Mode: Writes Data to Broker
-Refer TODO sections in the script. Edit the bootstrap servers and add 2-3 cities of your choice. Run the code to write to Kafka stream.
+## 🛠️ Tech Stack
 
-### 2. Consumer Mode: Reads Data from Broker
-Modify the TODO section by filling appropriate parameters/arguments in the starter code. Verify `Kafka_log.csv`.  
+- **Apache Kafka**: Distributed streaming platform
+- **Python**: kafka-python library for producers/consumers
+- **kcat**: Command-line Kafka toolkit
+- **Jupyter Notebook**: Interactive development environment
 
-Ref:  
-[KafkaProducer Documentation](https://kafka-python.readthedocs.io/en/master/apidoc/KafkaProducer.html)  
-[KafkaConsumer Documentation](https://kafka-python.readthedocs.io/en/master/apidoc/KafkaConsumer.html)
+## 🚀 Getting Started
 
-## Using Kafka’s CLI tools
-`kcat` is a CLI (Command Line Interface). Previously known as kafkacat.  
-Install with your package installer such as:
-- macOS: `brew install kcat`
-- Ubuntu: `apt-get install kcat`
-- Note for Windows Users: Setting up kcat on Windows is complex. Please work in pairs with someone with mac/Ubuntu during recitation for this deliverable. The purpose is to understand CLI which will be helpful in the group project for using Kafka on Virtual machines (Linux based).
+### Prerequisites
+```bash
+# Install kcat
+brew install kcat  # macOS
+apt-get install kcat  # Ubuntu
+```
 
-Using the kcat documentation, write a command that connects to the local Kafka broker, specifies a topic, and consumes messages from the earliest offset. 
+### Setup SSH Tunnel
+```bash
+ssh -L 9092:localhost:9092 user@remote-server -NTf
+```
 
-Ref:\
-  [kcat usage](https://docs.confluent.io/platform/current/app-development/kafkacat-usage.html)  
-  [kcat GitHub](https://github.com/edenhill/kcat)   
+### Run the Notebook
+Open `KafkaDemo.ipynb` and execute the cells to see the producer-consumer pattern in action.
 
-## Optional but Recommended
-For your group project you will be reading movies from the Kafka stream. Try finding the list of all topics and then read some movielog streams to get an idea of what the data looks like:  
-`kcat -b localhost:9092 -L`
+## 📊 Key Learnings
 
-## Additional resources
-- [Kafka Introduction Video 1](https://www.youtube.com/watch?v=PzPXRmVHMxI) <- Recommended video for a quick 5-min introduction to Kafka
-- [Kafka Introduction Video 2](https://www.youtube.com/watch?v=JalUUBKdcA0)
-- [Apache Kafka](https://kafka.apache.org/)
-- [Kafka for Beginners](https://www.cloudkarafka.com/blog/2016-11-30-part1-kafka-for-beginners-what-is-apache-kafka.html)
-- [What is Apache Kafka? - TIBCO](https://www.tibco.com/reference-center/what-is-apache-kafka)
-- [frequent bug list and solutions](./bug_list.md)
+### Kafka Concepts Mastered
+- **Topics & Partitions**: Message organization and distribution
+- **Offsets**: Message ordering and consumer resume capability  
+- **Consumer Groups**: Load balancing and fault tolerance
+- **auto_offset_reset**: Different strategies for new consumers
 
+### CLI Commands
+```bash
+# List all topics
+kcat -b localhost:9092 -L
 
+# Consume messages with offset info
+kcat -b localhost:9092 -t my-topic -C -c 5 -o beginning -f 'Offset: %o, Message: %s\n'
+```
+
+## 🔮 Future Extensions
+
+Planning to build a **Movie Recommendation Pipeline** using existing movielog streams:
+- Real-time viewing pattern analysis
+- Collaborative filtering recommendations  
+- Dashboard for recommendation insights
+
+## 📚 Resources
+
+- [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
+- [kafka-python Library](https://kafka-python.readthedocs.io/)
+- [kcat Usage Guide](https://docs.confluent.io/platform/current/app-development/kafkacat-usage.html)
+
+---
+
+*This project demonstrates practical understanding of distributed streaming systems and real-time data processing.*
