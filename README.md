@@ -60,13 +60,6 @@ kcat -b localhost:9092 -L
 kcat -b localhost:9092 -t my-topic -C -c 5 -o beginning -f 'Offset: %o, Message: %s\n'
 ```
 
-## Future Extensions
-
-Planning to build a **Movie Recommendation Pipeline** using existing movielog streams:
-- Real-time viewing pattern analysis
-- Collaborative filtering recommendations  
-- Dashboard for recommendation insights
-
 ## Resources
 
 - [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
